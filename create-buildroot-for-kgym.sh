@@ -113,6 +113,7 @@ BR2_PACKAGE_PYTHON_GREENLET_ARCH_SUPPORTS=y
 BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS=y
 BR2_PACKAGE_PYTHON_PIP=y
 BR2_PACKAGE_PYTHON_SETUPTOOLS=y
+BR2_PACKAGE_PYTHON_REQUESTS=y
 
 BR2_PACKAGE_KEXEC=y
 BR2_PACKAGE_KEXEC_ZLIB=y
@@ -228,7 +229,7 @@ cat >$1/boot/grub/grub.cfg <<EOF
 set default="0"
 set timeout="0"
 menuentry "syzkaller" {
-	linux /boot/bzImage root=/dev/sda1 console=ttyS0 crashkernel=1G
+	linux /boot/bzImage root=/dev/sda1 console=ttyS0 crashkernel=768M@16M
 }
 EOF
 EOFEOF
@@ -239,7 +240,7 @@ cat >${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg <<EOF
 set default="0"
 set timeout="0"
 menuentry "syzkaller" {
-	linux /Image.gz root=PARTLABEL=root enforcing=0 console=ttyS0 crashkernel=1G
+	linux /Image.gz root=PARTLABEL=root enforcing=0 console=ttyS0 crashkernel=768M@16M
 }
 EOF
 EOFEOF
