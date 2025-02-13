@@ -102,19 +102,6 @@ BR2_PACKAGE_REFPOLICY_POLICY_STATE_PERMISSIVE=y
 BR2_PACKAGE_BZIP2=y
 BR2_PACKAGE_XZ=y
 
-BR2_PACKAGE_PYTHON3=y
-BR2_PACKAGE_PYTHON3_PY_PYC=y
-
-BR2_PACKAGE_PYTHON3_SSL=y
-BR2_PACKAGE_PYTHON3_UNICODEDATA=y
-BR2_PACKAGE_PYTHON3_PYEXPAT=y
-BR2_PACKAGE_PYTHON3_ZLIB=y
-BR2_PACKAGE_PYTHON_GREENLET_ARCH_SUPPORTS=y
-BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS=y
-BR2_PACKAGE_PYTHON_PIP=y
-BR2_PACKAGE_PYTHON_SETUPTOOLS=y
-BR2_PACKAGE_PYTHON_REQUESTS=y
-
 BR2_PACKAGE_KEXEC=y
 BR2_PACKAGE_KEXEC_ZLIB=y
 BR2_PACKAGE_ZSTD=y
@@ -229,7 +216,7 @@ cat >$1/boot/grub/grub.cfg <<EOF
 set default="0"
 set timeout="0"
 menuentry "syzkaller" {
-	linux /boot/bzImage root=/dev/sda1 console=ttyS0 crashkernel=768M@16M
+	linux /boot/bzImage root=/dev/sda1 console=ttyS0 crashkernel=1024M
 }
 EOF
 EOFEOF
@@ -240,7 +227,7 @@ cat >${BINARIES_DIR}/efi-part/EFI/BOOT/grub.cfg <<EOF
 set default="0"
 set timeout="0"
 menuentry "syzkaller" {
-	linux /Image.gz root=PARTLABEL=root enforcing=0 console=ttyS0 crashkernel=768M@16M
+	linux /Image.gz root=PARTLABEL=root enforcing=0 console=ttyS0 crashkernel=1024M
 }
 EOF
 EOFEOF
